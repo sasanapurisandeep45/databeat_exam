@@ -1,0 +1,32 @@
+MariaDB [(none)]> create database EMP_DB;
+Query OK, 1 row affected (0.059 sec)
+
+MariaDB [(none)]> create table Employees(EMP_ID int,FIRST_NAME varchar(20),LAST_NAME varchar(20),SALARY INT,JOINING_DATE DATETIME,DEPARTMENT varchar(20));
+ERROR 1046 (3D000): No database selected
+
+MariaDB [(none)]> use EMP_DB;
+Database changed
+
+MariaDB [EMP_DB]> create table Employees(EMP_ID int,FIRST_NAME varchar(20),LAST_NAME varchar(20),SALARY INT,JOINING_DATE DATETIME,DEPARTMENT varchar(20));
+Query OK, 0 rows affected (0.135 sec)
+
+MariaDB [EMP_DB]> create table Variables_Details(EMP_REF_ID int,VARIABLES_DATE DATETIME,VARIABLES_AMOUNT int);
+Query OK, 0 rows affected (0.058 sec)
+
+MariaDB [EMP_DB]> create table Designation(EMP_REF_ID int,EMP_TITLE varchar(20),VARIABLES_DATE DATETIME);
+Query OK, 0 rows affected (0.050 sec)
+
+MariaDB [EMP_DB]> alter table Employees add primary key(EMP_ID);
+Query OK, 0 rows affected (0.221 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [EMP_DB]> alter table Variables_Details add foreign key(EMP_REF_ID) references Employees(EMP_ID);
+Query OK, 0 rows affected (0.516 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [EMP_DB]> alter table Designation add foreign key(EMP_REF_ID) references Employees(EMP_ID);
+Query OK, 0 rows affected (0.589 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+
+
